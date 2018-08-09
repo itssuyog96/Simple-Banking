@@ -1,0 +1,70 @@
+{
+	"pages" : [
+		{"id": "login", "name": "Login", "url": "../login.jsp"},
+		{"id": "home", "name": "Home", "url": "../home.jsp"},
+		{"id" : "new-account", "name" : "New Account", "url": "../customer/new-account.jsp"},
+		{"id" : "account-details", "name" : "Account Details", "url": "../customer/account-details.jsp"},
+		{"id" : "my-transaction", "name" : "My Transaction", "url": "../customer/my-transaction.jsp"},
+		{"id" : "create-account", "name" : "Create Account", "url": "../admin/create-account.jsp"},
+		{"id" : "all-transaction", "name" : "All Transaction", "url": "../admin/all-transaction.jsp"},
+		{"id" : "create-user", "name" : "Create User", "url": "../admin/create-user.jsp"},				
+		{"id" : "create-branch", "name" : "Create Branch", "url": "../bank/create-branch.jsp"},
+		{"id" : "accounts-explorer", "name" : "Accounts Explorer", "url": "../bank/accounts-explorer.jsp"},
+		{"id" : "bank-transactions", "name" : "Bank Transactions", "url": "../bank/bank-transactions.jsp"},
+		{"id" : "create-account", "name" : "Create Account", "url": "../branch/create-account.jsp"},
+		{"id" : "accounts-explorer", "name" : "Accounts Explorer", "url": "../branch/accounts-explorer.jsp"},
+		{"id" : "branch-transactions", "name" : "Branch Transactions", "url": "../branch/branch-transactions.jsp"},
+		{"id" : "logout", "name" : "Logout", "url": "../logout.jsp"}
+	
+	],
+	"menu" : [
+		{
+			"role": "default",
+			"menu-items" : [
+				{"id" : "home", "name" : "Home", "url": "../home.jsp"},
+				{"id" : "login", "name" : "Login", "url": "../login.jsp"}
+			]
+		},
+		{
+			"role": "customer",
+			"menu-items" : [
+				{"id" : "home", "name" : "Home", "url": "../home.jsp"},
+				{"id" : "new-account", "name" : "New Account", "url": "../customer/new-account.jsp"},
+				{"id" : "account-details", "name" : "Account Details", "url": "../customer/account-details.jsp"},
+				{"id" : "my-transactions", "name" : "My Transactions", "url": "../customer/my-transactions.jsp"},
+				{"id" : "transaction", "name" : "Transaction", "url": "../customer/transaction.jsp"},
+				{"id" : "logout", "name" : "Logout", "url": "../logout.jsp"}
+			]
+		},
+		{
+			"role": "admin",
+			"menu-items" : [
+				{"id" : "home", "name" : "Home", "url": "../home.jsp"},
+				{"id" : "create-bank", "name" : "Create Bank", "url": "../admin/create-bank.jsp"},
+				{"id" : "all-transactions", "name" : "All Transactions", "url": "../admin/all-transactions.jsp"},
+				{"id" : "create-user", "name" : "Create User", "url": "../admin/create-user.jsp"},				
+				{"id" : "logout", "name" : "Logout", "url": "../logout.jsp"}
+			]
+		},
+		{
+			"role": "bank",
+			"menu-items" : [
+				{"id" : "home", "name" : "Home", "url": "../home.jsp"},
+				{"id" : "create-branch", "name" : "Create Branch", "url": "../bank/create-branch.jsp"},
+				{"id" : "accounts-explorer", "name" : "Accounts Explorer", "url": "../bank/accounts-explorer.jsp"},
+				{"id" : "bank-transactions", "name" : "Bank Transactions", "url": "../bank/bank-transactions.jsp"},				
+				{"id" : "logout", "name" : "Logout", "url": "../logout.jsp"}
+			]
+		},
+			{
+			"role": "branch",
+			"menu-items" : [
+				{"id" : "home", "name" : "Home", "url": "../home.jsp"},
+				{"id" : "create-account", "name" : "Create Account", "url": "../branch/create-account.jsp"},
+				{"id" : "accounts-explorer", "name" : "Accounts Explorer", "url": "../branch/accounts-explorer.jsp"},
+				{"id" : "branch-transactions", "name" : "Branch Transactions", "url": "../branch/branch-transactions.jsp"},				
+				{"id" : "logout", "name" : "Logout", "url": "../logout.jsp"}
+			]
+		}
+	]
+}

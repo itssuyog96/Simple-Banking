@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Pay Bills | XYZ Bank</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="title">Open New Account | Iron Bank of Braavos</h2>
+
+        <hr>
+
+
+        <ul class="nav">
+            <li></li>
+        </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Banking/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new-account.html">New Account</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="pay-bills.html">Pay Bills
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <br/>
+
+        <div class="row">
+            <form id="bill-form" action="pay-bills.do" method="POST">
+
+                <div class="form-group">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active radio-inline elec_bill_radio">
+                            <input class="radio-control" value="e" id="elec_bill_radio" type="radio" name="bill_type">Electricity Bill
+                        </label>
+                        <label class="btn btn-secondary radio-inline phone_bill_radio">
+                            <input class="radio-control" value="p" id="phone_bill_radio" type="radio" name="bill_type">Phone Bill
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+
+                <div class="form-group elec_providers" style="display:hidden;">
+                    <select name="elec_provider" id="elec_provider" class="form-control select-control">
+                        <option value="MSEB">MSEB</option>
+                        <option value="Tata">Tata</option>
+                        <option value="Reliance">Reliance</option>
+                    </select>
+                </div>
+                <div class="form-group phone_providers" style="display:none;" class="form-control select-control">
+                    <select name="phone_provider" id="phone_provider" class="form-control select-control">
+                        <option value="MTNL">MTNL</option>
+                        <option value="Jio">Jio</option>
+                        <option value="Airtel">Airtel</option>
+                        <option value="Vodafone">Vodafone</option>
+                        <option value="Idea">Idea</option>
+                    </select>
+                </div>
+                <br />
+                <br />
+                <hr />
+                <div class="form-group">
+                    <label for="amount">Bill Amount : </label>
+                    <input type="text" name="amount" id="amount">
+                </div>
+                
+
+            <br><br><br>
+            <hr />
+                <button id="bill-form-submit" class="btn btn-success" type="submit">Pay Bill</button>&nbsp;<span id="success_msg" style="color:green; display:none;"></span>
+            </form>
+            </div>
+        
+        <div class="row" style="margin-top:120px;"></div>
+        <hr/>
+        <div class="footer">
+            Wish you happy banking
+        </div>
+        <br />
+        <br />
+        <br />
+    </div>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
+
+    <script>
+        $('.elec_bill_radio').on('click', function(e){
+            $('.elec_providers').css('display', 'block');
+            $('.phone_providers').css('display', 'none');
+        })
+
+        $('.phone_bill_radio').on('click', function(e){
+            $('.elec_providers').css('display', 'none');
+            $('.phone_providers').css('display', 'block');
+        })
+    </script>
+
+    <script>
+        $('#bill-form-submit').on('click', function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url: "pay-bills.do",
+                method: 'POST' ,
+                data: $('#bill-form').serialize(),
+                success: function(data){
+                    data = JSON.parse(data);
+                    console.log(data.message);
+                    if(data.e)
+                    	$('#success_msg').html("<strong>Electricity bill paid for "+ data.elec_provider +" of Rs."+ data.amount +".</strong>")
+                    if(data.p)
+                    	$('#success_msg').html("<strong>Phone bill paid for "+ data.phone_provider +" of Rs."+ data.amount +".</strong>")
+                    $('#success_msg').css('display', 'block');
+                },
+                error: function(error){
+                    console.log(error.responseText);
+                }            
+            })
+        });
+
+
+
+    </script>
+</html>
