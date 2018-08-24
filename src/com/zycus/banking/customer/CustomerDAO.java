@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import com.zycus.banking.util.ConnectionUtil;
+import com.zycus.banking.util.userType;
 
 public class CustomerDAO {
 
@@ -45,6 +48,48 @@ public class CustomerDAO {
 			}
 
 			return customers;
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public JSONObject findByAccessType(userType role) {
+		String SQL_SELECT;
+		JSONObject obj = new JSONObject();
+
+		List<Customer> customers = new LinkedList<>();
+		try (Connection con = ConnectionUtil.getConnection()) {
+
+			switch (role) {
+			case ADMIN:
+				SQL_SELECT = "SELECT id, title, firstName, lastName, dob, username, role, bankcode, branchcode, reg_status FROM customer";
+				break;
+			case BANK:
+				SQL_SELECT = "SELECT id, title, firstName, lastName, dob, username, role, branchcode, reg_status FROM customer WHERE ROLE='BRANCH' OR ROLE='CUSTOMER";
+				break;
+			case BRANCH:
+				SQL_SELECT = "SELECT id, title, firstName, lastName, dob, username. reg_status FROM customer WHERE ROLE='CUSTOMER'";
+				break;
+			case CUSTOMER:
+				return null;
+			default:
+				return null;
+			}
+
+			PreparedStatement ps = con.prepareStatement(SQL_SELECT);
+			ResultSet rs = ps.executeQuery();
+
+			obj.put("rs", rs);
+			obj.put("meta-count", rs.getMetaData().getColumnCount());
+			for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+				obj.put("meta-name-" + i, rs.getMetaData().getColumnName(i));
+				obj.put("meta-type-" + i, rs.getMetaData().getColumnClassName(i));
+			}
+
+			return obj;
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -96,10 +141,29 @@ public class CustomerDAO {
 		}
 	}
 
-	public boolean setRegistered(Customer customer) {
+	public boolean setRegistered(String customerId) {
 		try (Connection con = ConnectionUtil.getConnection()) {
 			PreparedStatement ps = con.prepareStatement("UPDATE CUSTOMER SET REG_STATUS = TRUE WHERE ID = ?");
-			ps.setString(1, customer.getId());
+			ps.setString(1, customerId);
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean updateCustomer(String id, String username, String role, String bankCode, String branchCode) {
+		try (Connection con = ConnectionUtil.getConnection()) {
+			PreparedStatement ps = con.prepareStatement(
+					"UPDATE CUSTOMER SET REG_STATUS = TRUE, ROLE=?, USERNAME=?, PASSWORD=?, BANKCODE=?, BRANCHCODE=? WHERE ID = ?");
+			ps.setString(1, role);
+			ps.setString(2, username);
+			ps.setString(3, username);
+			ps.setString(4, bankCode);
+			ps.setInt(5, Integer.parseInt(branchCode));
+			ps.setString(6, id);
 			ps.executeUpdate();
 
 			return true;

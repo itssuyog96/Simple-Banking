@@ -20,8 +20,10 @@ body {
 	border: 1px solid #CCCCCC;
 	padding: 0 !important;
 	position: relative;
-	overflow-y: auto;
+	overflow-y: scroll;
 	overflow-x: hidden;
+	width:100% !important;
+	max-width: 100% !important;
 }
 
 nav {
@@ -61,6 +63,7 @@ h2 {
 	margin-top: 10px;
 	text-align: center;
 	margin-bottom: 30px;
+	width: 100%
 }
 
 p {
@@ -148,4 +151,60 @@ div#all_accounts_card .card-header {
 
 div#all_accounts_card .card-body {
 	padding: 0;
+}
+
+div.form {
+	width: 330px;
+	height: 264px;
+	box-sizing: border-box;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -160px;
+	margin-top: -220px;
+}
+
+h3 {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.btn {
+	width: 100%;
+	font-size: 18px !important;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#user_id {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom: 0px;
+}
+
+#password {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	margin-bottom: 30px;
+}
+
+p.new_user {
+	font-size: 12px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+tr{
+	font-size: 12px !important;
+}
+
+.select{
+	font-size: 12px;
+    height: 100%;
+    margin-right: 90px;
+}
+
+.btn{
+	width:auto !important;
+	font-size: 12px !important;
 }

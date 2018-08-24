@@ -2,7 +2,6 @@ package com.zycus.banking.branch;
 
 import com.zycus.banking.account.Account;
 import com.zycus.banking.account.accountType;
-import com.zycus.banking.customer.Customer;
 
 public abstract class Branch {
 	protected int branchCode;
@@ -17,9 +16,9 @@ public abstract class Branch {
 		this.branchCode = branchCode;
 	}
 
-	public abstract Account openNewAccount(accountType accountType, float balance, Customer accountHolder);
+	public abstract Account openNewAccount(accountType accountType, float balance, String accountHolder);
 
-	public abstract Account getAccount(long accountNo);
+	public abstract Account getAccount(long accountNo) throws Exception;
 
 	public abstract void closeAccount(long accountNo);
 

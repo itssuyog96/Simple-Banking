@@ -25,21 +25,18 @@ public class Template {
 
 			StringBuilder strBuilder = new StringBuilder();
 			strBuilder.append(
-					"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
-			strBuilder.append("<html>\r\n");
-			strBuilder.append("<head>\r\n");
-			strBuilder.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
-			strBuilder.append(
-					"<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">\r\n");
-			strBuilder.append(
-					"<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">\r\n");
-			strBuilder.append("<link rel=\"stylesheet\" href=\"../../style.css\" />\r\n");
-			strBuilder.append("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>\r\n");
-			strBuilder.append("<script src=\"https://unpkg.com/popper.js\"></script>\r\n");
-			strBuilder.append(
-					"<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+					"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n")
+					.append("<html>\r\n").append("<head>\r\n")
+					.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">")
+					.append("<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\" name=\"viewport\" />")
+					.append("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">\r\n")
+					.append("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">\r\n")
+					.append("<link rel=\"stylesheet\" href=\"../../style.css\" />\r\n")
+					.append("<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>\r\n")
+					.append("<script src=\"https://unpkg.com/popper.js\"></script>\r\n")
+					.append("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>")
 
-			strBuilder.append("<title>");
+					.append("<title>");
 			// Inject title
 			for (Object object : objArray) {
 				JSONObject jObject = (JSONObject) object;
@@ -49,10 +46,8 @@ public class Template {
 				}
 			}
 
-			strBuilder.append("</title>\r\n");
-			strBuilder.append("</head>\r\n");
-			strBuilder.append("<body>\r\n");
-			strBuilder.append("<div class=\"container\">\r\n");
+			strBuilder.append("</title>\r\n").append("</head>\r\n").append("<body>\r\n")
+					.append("<div class=\"container\">\r\n");
 
 			return strBuilder.toString();
 

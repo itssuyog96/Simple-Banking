@@ -53,6 +53,11 @@ public class Customer {
 		return firstName;
 	}
 
+	public String getFullName() {
+		return firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase() + " "
+				+ lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}

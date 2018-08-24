@@ -105,13 +105,8 @@
                         		int branchCode = Integer.parseInt(request.getParameter("branchCode"));
                         		accountType accountTypex = accountType.valueOf(request.getParameter("accountType"));
                         		String cust_id = request.getParameter("cust_id");
-                        		String title = request.getParameter("title");
-                        		String firstname = request.getParameter("firstname");
-                        		String lastname = request.getParameter("lastname");
-                        		Date dob = Date.valueOf(request.getParameter("dob"));
-                        		Customer customer = new Customer(cust_id, title, firstname, lastname, dob, true);
-                        		new AccountDAO().create((new BranchMap(bankCode, branchCode)).openNewAccount(accountTypex, 0f, customer));
-                        		new CustomerDAO().setRegistered(customer);
+                        		new AccountDAO().create((new BranchMap(bankCode, branchCode)).openNewAccount(accountTypex, 0f, cust_id));
+                        		new CustomerDAO().setRegistered(cust_id);
                         	}
                         %>
                         

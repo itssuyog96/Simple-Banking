@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import com.zycus.banking.account.Account;
+import com.zycus.banking.account.AccountDAO;
 import com.zycus.banking.account.accountType;
 import com.zycus.banking.account.status;
-import com.zycus.banking.customer.Customer;
 
 public class BranchMap extends Branch {
 
@@ -19,17 +19,16 @@ public class BranchMap extends Branch {
 	}
 
 	@Override
-	public Account openNewAccount(accountType accountType, float balance, Customer accountHolder) {
+	public Account openNewAccount(accountType accountType, float balance, String accountHolder) {
 
 		return new Account((new Date().getTime() % 10000) + branchCode * 1000000, accountHolder, accountType, balance,
 				bankCode, branchCode);
 
 	}
 
-	public Account getAccount(long accountNo) {
+	public Account getAccount(long accountNo) throws Exception {
 
-		// TODO: Call DAO for action
-		return allAccounts.get(accountNo);
+		return new AccountDAO().findByAccountBankBranch(accountNo, bankCode, branchCode);
 
 	}
 

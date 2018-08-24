@@ -13,6 +13,7 @@ public class BankDAO {
 
 	private static final String SQL_SELECT_ID = "SELECT BANKCODE, BANKNAME FROM BANK";
 	private static final String SQL_INSERT = "INSERT INTO BANK(BANKCODE, BANKNAME) VALUES(?,?)";
+	private static final String SQL_DELETE = "DELETE FROM BANK WHERE BANKCODE=? AND BANKNAME=?";
 
 	public void create(Bank bank) {
 		try (Connection con = ConnectionUtil.getConnection()) {
@@ -45,6 +46,22 @@ public class BankDAO {
 			return null;
 		}
 
+	}
+
+	public int deleteBank(Bank bank) {
+		try (Connection con = ConnectionUtil.getConnection();
+				PreparedStatement ps = con.prepareStatement(SQL_DELETE);) {
+
+			ps.setString(1, bank.getBankCode());
+			ps.setString(2, bank.getBankName());
+
+			return ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
 
 	public Bank findById(int id) {

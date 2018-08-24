@@ -1,17 +1,15 @@
 package com.zycus.banking.account;
 
-import com.zycus.banking.customer.Customer;
-
 public class Account {
 	private long accountNumber;
 	private int branchCode;
-	private Customer accountHolder;
+	private String accountHolder;
 	private accountType accountType;
 	private float balance;
 	private String bankCode;
 	private status status;
 
-	public Account(long accountNumber, Customer accountHolder, com.zycus.banking.account.accountType accountType,
+	public Account(long accountNumber, String accountHolder, com.zycus.banking.account.accountType accountType,
 			float balance, String bankCode, int branchCode) {
 		super();
 		this.accountNumber = accountNumber;
@@ -31,7 +29,7 @@ public class Account {
 		return branchCode;
 	}
 
-	public Customer getAccountHolder() {
+	public String getAccountHolder() {
 		return accountHolder;
 	}
 
@@ -51,7 +49,7 @@ public class Account {
 		this.branchCode = branchCode;
 	}
 
-	void setAccountHolder(Customer accountHolder) {
+	void setAccountHolder(String accountHolder) {
 		this.accountHolder = accountHolder;
 	}
 
