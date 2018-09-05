@@ -194,7 +194,6 @@ tr {
 		}
 
 		doTransaction(data);
-
 	})
 
 	$('#deposit-form').on('submit', function(e) {
@@ -223,6 +222,7 @@ tr {
 		doTransaction(data);
 	})
 </script>
+
 
 <!-- END OF MAIN BODY -->
 <%=Template.getFooter()%>
